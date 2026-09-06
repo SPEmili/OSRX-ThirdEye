@@ -7,14 +7,14 @@ In a world where some software want almost all your system resources, OS/RX Thir
 To run OS/RX ThirdEye on Macs you need:
 - Mac OS X 10.1 (2001) or newer
 - Java 1.3 or newer installed
-- An Apple Silicon, Intel or PowerPC Mac (G3 or newer)
+- An Apple Silicon, Intel or PowerPC Mac (G3 or newer - anything newer than 1997)
 - at least 36MB of free memory
 
 # Windows
 To run OS/RX ThirdEye on Windows PCs you need:
 - Windows XP (2001) or newer installed
 - Java 1.3 or newer installed
-- Intel Pentium 4 / AMD Athlon or newer (pretty much any PC after 2002)
+- An x86, x64 or Aarch64 processor (Intel, AMD, Qualcomm, etc. - anything newer than 1998)
 - at least 40MB of free memory
 
 # Linux and other platforms
