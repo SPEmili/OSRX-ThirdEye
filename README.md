@@ -22,6 +22,7 @@ To run OS/RX ThirdEye on Linux or any other OS you need:
 - an OS that supports Java 1.3 or newer
 - 40MB of free memory
 - a GUI-based interface (ThirdEye does not support CLI-only systems)
+
 Note that OS/RX ThirdEye is a component of the Linux distribution OS/RX (www.osrx.co.uk)
 
 ## How to use
