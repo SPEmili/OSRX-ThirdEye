@@ -34,14 +34,14 @@ public class ThirdEyeAIO extends JFrame {
         lblHowToUse.setFont(new Font("SansSerif", Font.PLAIN, 12));
         lblHowToUse.setForeground(Color.white);
         
-        JPanel howToUse = new JPanel();
+        final JPanel howToUse = new JPanel();
         howToUse.setBackground(new Color(0,0,0,100));
         howToUse.add(lblHowToUse);
         magpanel.add(howToUse);
         
-        JPanel btnSettings = new JPanel();
+        final JPanel btnSettings = new JPanel();
         btnSettings.addMouseListener(new MouseAdapter() {
-        	@Override
+        	//@Override
         	public void mouseClicked(MouseEvent e) {
         		//TODO: Settings Menu
         	}
@@ -52,9 +52,9 @@ public class ThirdEyeAIO extends JFrame {
         btnSettings.setVisible(true); //TODO: turn on when a settings window is complete
         //zoomDisplay.add(btnSettings);
         
-        JPanel btnAbout = new JPanel();
+        final JPanel btnAbout = new JPanel();
         btnAbout.addMouseListener(new MouseAdapter() {
-        	@Override
+        	//@Override
         	public void mouseClicked(MouseEvent e) {
         		if(!aboot.isRunning) //prevent multiple instances of About
         			aboot.main(null);
@@ -67,9 +67,9 @@ public class ThirdEyeAIO extends JFrame {
         btnAbout.setVisible(true); //TODO: turn on when a settings window is complete
         magpanel.add(btnAbout);
         
-    	JPanel btnToggleItems = new JPanel();
+    	final JPanel btnToggleItems = new JPanel();
     	btnToggleItems.addMouseListener(new MouseAdapter() {
-    		@Override
+    		//@Override
     		public void mouseClicked(MouseEvent e) {
     			visibleUI = !visibleUI;
     			magpanel.setVisibleUI(visibleUI);
@@ -107,7 +107,7 @@ public class ThirdEyeAIO extends JFrame {
         btnAbout.add(lblAbout);
 
     	addComponentListener(new ComponentAdapter() {
-    		@Override
+    		//@Override
     		public void componentResized(ComponentEvent e) {
     			btnToggleItems.setLocation(magpanel.getWidth()-btnToggleItems.getWidth()-6,6);
     			btnSettings.setLocation(magpanel.getWidth()-btnSettings.getWidth()-6,btnSettings.getHeight()*2+18);
@@ -116,7 +116,7 @@ public class ThirdEyeAIO extends JFrame {
     			howToUse.setLocation(6, magpanel.getHeight()-28);
     		}
     	});
-        setTitle("OS/RX ThirdEye 1.0");
+        setTitle("OS/RX ThirdEye 1.0.1");
         setSize(470, 320);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -125,7 +125,11 @@ public class ThirdEyeAIO extends JFrame {
 
     public static void main(String[] args) {
         //fixes the event dispatch thread (DO NOT TOUCH)
-        SwingUtilities.invokeLater(() -> new ThirdEyeAIO().setVisible(true));
+        SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new ThirdEyeAIO().setVisible(true);
+			}
+		});
     }
 }
 

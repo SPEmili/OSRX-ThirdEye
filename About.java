@@ -52,12 +52,12 @@ public class About extends JFrame {
 	 */
 	public About() {
 		addWindowListener(new WindowAdapter() {
-			@Override
+			//@Override
 			public void windowClosed(WindowEvent e) {
 				isRunning=false;
 			}
 		});
-		setTitle("OS/RX ThirdEye v1.0");
+		setTitle("OS/RX ThirdEye v1.0.1");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 400, 300);

@@ -20,7 +20,10 @@ import java.awt.PointerInfo;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Robot;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JLabel;
@@ -66,34 +69,36 @@ class ThirdEyeMagnifier extends JPanel {
             JOptionPane.showMessageDialog(getComponentPopupMenu(), e);
         }
         //scrolling code
-        addMouseWheelListener((MouseWheelEvent e) -> {
-        	//zoom bits
-            if(canScrollToZoom)
-            {
-            	if (e.getWheelRotation() < 0) {
-                    zoomamnt = Math.min(12.0, zoomamnt + 0.5);
-                } else {
-                    zoomamnt = Math.max(1.5, zoomamnt - 0.5);
-                }
-                zoomLabel.setText("Zoom: " + zoomamnt + "x");
-            }
-            
-            //opacity bits
-            if(visibleUI)
-            {
-            	zoomAmountPanel.setOpaque(true);
-                zoomAmountPanel.setBackground(new Color(0,0,0,100));
-                zoomAmountPanel.setBounds(6, 6, 80, 30);
-                zoomLabel.setVisible(true);
-                zoomLabel.setOpaque(false);
-                zoomLabel.setForeground(new Color(255,255,255));
-                zoomAmountPanel.setVisible(true);
-            }
-            
-            countdown=40;
-            fadeOut.start();
-            repaint();
-        });
+        addMouseWheelListener(new MouseWheelListener() {
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				//zoom bits
+			    if(canScrollToZoom)
+			    {
+			    	if (e.getWheelRotation() < 0) {
+			            zoomamnt = Math.min(12.0, zoomamnt + 0.5);
+			        } else {
+			            zoomamnt = Math.max(1.5, zoomamnt - 0.5);
+			        }
+			        zoomLabel.setText("Zoom: " + zoomamnt + "x");
+			    }
+			    
+			    //opacity bits
+			    if(visibleUI)
+			    {
+			    	zoomAmountPanel.setOpaque(true);
+			        zoomAmountPanel.setBackground(new Color(0,0,0,100));
+			        zoomAmountPanel.setBounds(6, 6, 80, 30);
+			        zoomLabel.setVisible(true);
+			        zoomLabel.setOpaque(false);
+			        zoomLabel.setForeground(new Color(255,255,255));
+			        zoomAmountPanel.setVisible(true);
+			    }
+			    
+			    countdown=40;
+			    fadeOut.start();
+			    repaint();
+			}
+		});
         
         //zoom indicator
         zoomAmountPanel = new JPanel();
@@ -106,13 +111,21 @@ class ThirdEyeMagnifier extends JPanel {
         add(zoomAmountPanel);
         
         //aim for 60fps aka 16ms - TODO: add toggle for 15-30-60-120-custom FPS
-        Timer timer = new Timer(16, e -> updateCapture());
+        Timer timer = new Timer(16, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateCapture();
+			}
+		});
         timer.start();
     }
     
     //stinky messy ugly code here, it works so i won't change it (yet)
     //(all of this just for the fade out effect everyone will ignore)
-    Timer fadeOut = new Timer(50, e -> fadeOutWhenInactive());
+    Timer fadeOut = new Timer(50, new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			fadeOutWhenInactive();
+		}
+	});
     private int countdown = 100; //1 is subtracted every 20ms - when 0 hits the fade out starts
     private void fadeOutWhenInactive()
     {
@@ -153,7 +166,7 @@ class ThirdEyeMagnifier extends JPanel {
         repaint();
     }
 
-    @Override
+    //@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
