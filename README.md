@@ -1,4 +1,6 @@
 ## System Requirements for version 1.0.1
+In a world where some software want almost all your system resources, OS/RX ThirdEye will run on just about anything you can think of.
+
 # macOS
 To run OS/RX ThirdEye on Macs you need:
 - Mac OS X 10.1 (2001) or newer installed
