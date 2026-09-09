@@ -1,5 +1,6 @@
 ## System Requirements for version 1.0.1
 In a world where some software want almost all your system resources, OS/RX ThirdEye will run on just about anything you can think of.
+![G3_Demo](https://preview.redd.it/i-made-a-magnifying-software-for-older-macs-v0-x6oelwcl4koh1.jpg?width=1080&crop=smart&auto=webp&s=9147d46aa2fade82e94365097bb15e9df5461cad)
 
 # macOS
 To run OS/RX ThirdEye on Macs you need:
