@@ -2,6 +2,13 @@
 In a world where some software want almost all your system resources, OS/RX ThirdEye will run on just about anything you can think of.
 ![G3_Demo](https://preview.redd.it/i-made-a-magnifying-software-for-older-macs-v0-x6oelwcl4koh1.jpg?width=1080&crop=smart&auto=webp&s=9147d46aa2fade82e94365097bb15e9df5461cad)
 
+## To be added in future versions
+- Color shifting for colorblind assistance
+- Screenshots
+- Text Detection
+- System specific builds (rpm, deb, pkg, dmg, etc.)
+- Integration with other OS/RX software (very in the future)
+
 # macOS
 To run OS/RX ThirdEye on Macs you need:
 - Mac OS X 10.1 (2001) or newer
